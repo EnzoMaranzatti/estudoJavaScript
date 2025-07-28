@@ -1,0 +1,478 @@
+Delivered-To: enzomaranzattisilva@gmail.com
+Received: by 2002:a05:612c:4790:b0:4d5:d94b:f14b with SMTP id ly16csp7077619vqb;
+        Mon, 7 Jul 2025 10:32:07 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFq6oyb3OaLaSrIxQiOqdAM5+hvEkGv3ViQy+eba7J1z9WPP77HmiKaAj0wtuaD6wSL9ID4
+X-Received: by 2002:a05:6902:2210:b0:e85:1715:9389 with SMTP id 3f1490d57ef6-e89a0b23d99mr17449179276.18.1751909527598;
+        Mon, 07 Jul 2025 10:32:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1751909527; cv=none;
+        d=google.com; s=arc-20240605;
+        b=K3Ye8wDalhTlNHqN6wMe/3Tb7fyjJS+Su9C66pmLZKYqr1yxTONRaHZ8b0LXLDTK63
+         LS32Fonkku+HEo5TsMj+68I9KChM90yFH3Sfx0r1J/fKL4eR4Jb7XyB/91y1+wWLQe1g
+         jHbbnh6JZ1Dkwo4SWbacKaK0zlmdMkKt9iOzmuwRp4ajL31olZ/JUFTLjK6rZz/ojT6X
+         fuiPL3IOWjuvYgdRxVeE5poBB1+Cm0EdXAI2hnkq9xJHbkUNRMKr2VveLayM2BCdMyBg
+         ssMUVgGr29XqgQKy8gnjhLpIGn0gFXZvGwZjxM1rSOgE5MeGtjl3CSt0nyYEYtJU+MYK
+         k3Sw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=cc:in-reply-to:message-id:date:references:from:subject:reply-to
+         :mime-version:to:dkim-signature;
+        bh=z2ld4mhG9T27BcGwbQt+DEEVd58b/zVyx5zYtmZiKQw=;
+        fh=NxoHJnchmIzeMw+V61JIZp5q5yF1ZbGr0vZSI4AqqzY=;
+        b=BcI3TIKCAXZg8SYW2nq15nv63ADSQdbIAOs8RUZ0tazuQtWMGlV4zhnY1KBo+Q2sFU
+         6Ru2OzCGGKfpGPLG2LwDVM0Dq6aFewbj2/RXnQ3yXSpYVcseiKqV4rzM8I7nfuSTqTiP
+         1eBoVrkzWpwmzHCRic0Z9weWU/V+CumyWNNiDwXzZd74YcvAqIQJTqCWT8vrrRyCfO3C
+         NdkF6kKXoQt6NM2hQgrGZt27daPMvuxj+jz8qd31ecU0f7Luz0Eq4DHct8OW3wc+BIe7
+         W2OObnE/HN+GMal0JsY4hNsRpCYTHkAlZlEd6yCwYVYAy5A8z7iMtud9iK6t7IqpqlsW
+         nNNA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@lovable.dev header.s=intercom header.b=TAVzAv5o;
+       spf=pass (google.com: domain of bounces+215469738363311@outbound.intercom.lovable.dev designates 192.174.84.149 as permitted sender) smtp.mailfrom=bounces+215469738363311@outbound.intercom.lovable.dev;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=lovable.dev
+Return-Path: <bounces+215469738363311@outbound.intercom.lovable.dev>
+Received: from mta-174-84-149.intercom.com.sparkpostmail.com (mta-174-84-149.intercom.com.sparkpostmail.com. [192.174.84.149])
+        by mx.google.com with ESMTPS id 3f1490d57ef6-e899c5bf244si6511452276.374.2025.07.07.10.32.07
+        for <enzomaranzattisilva@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 07 Jul 2025 10:32:07 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+215469738363311@outbound.intercom.lovable.dev designates 192.174.84.149 as permitted sender) client-ip=192.174.84.149;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@lovable.dev header.s=intercom header.b=TAVzAv5o;
+       spf=pass (google.com: domain of bounces+215469738363311@outbound.intercom.lovable.dev designates 192.174.84.149 as permitted sender) smtp.mailfrom=bounces+215469738363311@outbound.intercom.lovable.dev;
+       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=lovable.dev
+Return-Path: <bounces+215469738363311@outbound.intercom.lovable.dev>
+X-MSFBL: vu91zbJ/kbIjJz265DOGvmuaip2KDfD0ao/aFzPEXAk=|eyJyIjoiZW56b21hcmF
+	uemF0dGlzaWx2YUBnbWFpbC5jb20iLCJzdWJhY2NvdW50X2lkIjoiNDM0MjE0Iiw
+	idGVuYW50X2lkIjoiaW50ZXJjb20iLCJtZXNzYWdlX2lkIjoiNjg2Njk3MDQ2YzY
+	4ZGI3NjViMjEiLCJjdXN0b21lcl9pZCI6IjEifQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lovable.dev;
+	s=intercom; t=1751909527; i=@lovable.dev;
+	bh=z2ld4mhG9T27BcGwbQt+DEEVd58b/zVyx5zYtmZiKQw=;
+	h=To:Content-Type:Subject:From:Date:Message-ID:Cc:From:To:Cc:
+	 Subject;
+	b=TAVzAv5o7lMFALvEh8etTPm08vV5O3IkPes8+WVqJf8QzZW6bnE9piNLJYImK5+hV
+	 3k6tMtoP7wCdYx6dtEleFPdwMhFamsUVaeNH0CBnu0RdK2AkDDp5jmSNan2/bbVDqF
+	 R7qXbXBmVoE0RiEFG7JTsTdpIi0vrF0dDmKfj4RM=
+Received: from [10.90.45.148] ([10.90.45.148])
+	by i-04acba1c06216eabb.mta4vrest.sd.prd.sparkpost (ecelerity 5.0.0.74528 r(msys-ecelerity:tags/5.0.0.11)) with REST
+	id 12/BD-25468-7940C686; Mon, 07 Jul 2025 17:32:07 +0000
+To: enzomaranzattisilva@gmail.com
+Content-Type: multipart/alternative; boundary="_----Lv++Er5KO/LgytO7bVExnA===_CF/AD-25468-7940C686"
+MIME-Version: 1.0
+Reply-To: Lovable Support from Lovable <support@lovable.dev>
+Subject: Re: Help - I can't connect the project on github
+From: "Lovable Support from Lovable" <support@lovable.dev>
+References: <7b1f1653f26bfb461981e32fac1f7252475f39e1@intercom> <CADFN7n+dY_rdWNfuAOPgSXSY2eR4hb_xt9fN_5jxzUJGsyZK=w@mail.gmail.com> ba99be39-7f60454f-1751908618-215469738363311-2482910@outbound.intercom.lovable.dev <CADFN7nL-wcNvY2T3iZEYRiNteuFe0onDoyMASewzTb9QNG9WdA@mail.gmail.com> ddfbe85a-a30629e0-1751895872-215469738363311-2482910@outbound.intercom.lovable.dev <CADFN7n+0jK43AhV6WRRdhU3MUURpmLOjW8akHbyc=fj8Ki3GjQ@mail.gmail.com> b4e1173a-a4825669-1751890074-215469738363311-2482910@outbound.intercom.lovable.dev <CADFN7nL6N5X_fGRyrJRyuaThTK68oEy6_PWitx9_RF7=LptJWA@mail.gmail.com> e7775ef3-fdf505a0-1751757591-215469738363311-2482910@outbound.intercom.lovable.dev
+Date: Mon, 07 Jul 2025 17:32:06 +0000
+X-Intercom-App-Id: teb21d17
+X-Intercom-Comment-Id: 26095991797
+X-Intercom-Notification-Reason: support_email
+X-Intercom-Bin: proven_users
+X-Auto-Response-Suppress: OOF, AutoReply
+Message-ID: <125453e5-68abd392-1751909526-215469738363311-2482910@outbound.intercom.lovable.dev>
+X-Report-Abuse: Please report spam or abuse to abuse@intercom.io
+X-Intercom-Source: workflow
+In-Reply-To: <CADFN7n+dY_rdWNfuAOPgSXSY2eR4hb_xt9fN_5jxzUJGsyZK=w@mail.gmail.com>
+X-Mailgun-Variables: {"app_id":"teb21d17","conversation_id":"215469738363311","intercom_message_id":2991072138,"user_id":"686517a8bb8f939521ebd09b"}
+Cc: support@lovable.dev
+
+--_----Lv++Er5KO/LgytO7bVExnA===_CF/AD-25468-7940C686
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Hi Enzo, =0D=0A This is indeed a known bug with GitHub username changes tha=
+t we're actively working to fix. =0D=0A Since standard workarounds haven't =
+resolved it, try this complete reset approach: =0D=0A Complete GitHub Integ=
+ration Reset: =0D=0A 1. Go to GitHub =E2=86=92 Settings =E2=86=92 Applicati=
+ons =E2=86=92 Installed GitHub Apps =E2=86=92 Lovable.dev =E2=86=92 Uninsta=
+ll =0D=0A2. Also check Settings =E2=86=92 Applications =E2=86=92 Authorized=
+ OAuth Apps =E2=86=92 Remove any Lovable entries =0D=0A3. In your remixed p=
+roject, go to Project Settings =E2=86=92 GitHub and disconnect if still sho=
+wing connected =0D=0A4. Wait 5-10 minutes, then reconnect via the GitHub ic=
+on in Lovable =0D=0A Alternative Path - Fresh Start: =0D=0A Create another =
+remix and connect it to a completely new repository name that you've never =
+used before. =0D=0A The username change creates deep integration mismatches=
+ that sometimes require this complete reset. =0D=0A Did this complete reset=
+ approach work for you=3F =0D=0A This answer was composed by Lovable Suppor=
+t, Lovable's AI Agent.
+--_----Lv++Er5KO/LgytO7bVExnA===_CF/AD-25468-7940C686
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/htm=
+l4/strict.dtd">=0D=0A<html style=3D"background-color: #fff;">=0D=0A<head>=
+=0D=0A<meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Ty=
+pe">=0D=0A<meta name=3D"viewport" content=3D"width=3Ddevice-width">=0D=0A<m=
+eta name=3D"format-detection" content=3D"telephone=3Dno">=0D=0A<!-- Resets =
+-->=0D=0A=0D=0A<style type=3D"text/css" data-premailer=3D"ignore">=0D=0A  #=
+outlook a{=0D=0A    padding: 0;=0D=0A  }=0D=0A  body{=0D=0A    -webkit-text=
+-size-adjust: none;=0D=0A    -ms-text-size-adjust: none;=0D=0A    font-weig=
+ht: 400;=0D=0A  }=0D=0A  .ReadMsgBody{=0D=0A    width: 100%;=0D=0A  }=0D=0A=
+  .ExternalClass{=0D=0A    width: 100%;=0D=0A  }=0D=0A  img {=0D=0A    bord=
+er: 0;=0D=0A    max-width: 100%;=0D=0A    height: auto;=0D=0A    outline: n=
+one;=0D=0A    display: inline-block;=0D=0A    margin: 0;=0D=0A    padding: =
+0;=0D=0A    text-decoration: none;=0D=0A    line-height: 100%;=0D=0A  }=0D=
+=0A  #backgroundTable{=0D=0A    height: 100% !important;=0D=0A    margin: 0=
+;=0D=0A    padding: 0;=0D=0A    width: 100% !important;=0D=0A  }=0D=0A</sty=
+le>=0D=0A<!-- Main styles -->=0D=0A=0D=0A<style type=3D"text/css">=0D=0A  /=
+**=0D=0A   * Generic=0D=0A   */=0D=0A=0D=0A  html {=0D=0A    background-col=
+or: #fff;=0D=0A  }=0D=0A=0D=0A  .main {=0D=0A    font-family: Helvetica, Ar=
+ial, sans-serif;=0D=0A    letter-spacing: 0;=0D=0A    width: 100%;=0D=0A  }=
+=0D=0A=0D=0A  table {=0D=0A    border-spacing: 0;=0D=0A    border-collapse:=
+ separate;=0D=0A    table-layout: fixed;=0D=0A  }=0D=0A=0D=0A  td {=0D=0A  =
+  padding: 0;=0D=0A    font-family: Helvetica, Arial, sans-serif;=0D=0A  }=
+=0D=0A=0D=0A  a {=0D=0A    border: none;=0D=0A    outline: none !important;=
+=0D=0A  }=0D=0A=0D=0A=0D=0A  /**=0D=0A   * Content=0D=0A   */=0D=0A=0D=0A  =
+.content-td {=0D=0A    line-height: 20px;=0D=0A    font-size: 14px;=0D=0A =
+ }=0D=0A=0D=0A  .content-td .article-card,=0D=0A  .content-td .intercom-int=
+erblocks-link-content-container {=0D=0A    max-width: 500px;=0D=0A    borde=
+r: 1px solid #e0e0e0;=0D=0A    border-radius: 2px;=0D=0A    padding: 0;=0D=
+=0A    margin-bottom: 15px;=0D=0A  }=0D=0A=0D=0A  .content-td .article-card=
+ .intercom-interblocks-link-content-container {=0D=0A    border: none;=0D=
+=0A  }=0D=0A=0D=0A  .content-td .messenger-card table {=0D=0A    border: no=
+ne;=0D=0A  }=0D=0A=0D=0A  .events {=0D=0A    background-color: #F5F5F5;=0D=
+=0A    border-collapse: separate;=0D=0A    border-spacing: 10px;=0D=0A    t=
+able-layout: fixed;=0D=0A    border-radius: 5px;=0D=0A    border: 1px solid=
+ #E5E5E5;=0D=0A    padding: 0px 15px 0px 15px;=0D=0A  }=0D=0A=0D=0A  .conte=
+nt-td .ratings td,=0D=0A  .content-td .fin-reply-options-old td,=0D=0A  .co=
+ntent-td .messenger-card td {=0D=0A    border: 0;=0D=0A    padding: 0;=0D=
+=0A  }=0D=0A=0D=0A  .content-td .fin-reply-options td {=0D=0A    border: no=
+ne;=0D=0A    padding: 0;=0D=0A  }=0D=0A=0D=0A  .content-td .messenger-card =
+td {=0D=0A    text-align: center;=0D=0A  }=0D=0A=0D=0A  .content-td .messen=
+ger-card td p {=0D=0A    font-size: 14px;=0D=0A    color: #6e7a89;=0D=0A   =
+ text-align: center;=0D=0A  }=0D=0A=0D=0A=0D=0A  .rating-link {=0D=0A    ma=
+x-width: 27px;=0D=0A    min-height: 27px;=0D=0A  }=0D=0A=0D=0A  .content-td=
+ > :first-child {=0D=0A    margin-top: 0;=0D=0A    padding-top: 0;=0D=0A  }=
+=0D=0A=0D=0A  .content-td h1 {=0D=0A    font-size: 1.3em;=0D=0A    font-wei=
+ght: bold;=0D=0A    line-height: 25px;=0D=0A    margin-top: 20px;=0D=0A    =
+margin-bottom: 5px;=0D=0A  }=0D=0A=0D=0A  .content-td h1 + h2 {=0D=0A    ma=
+rgin-top: 0 !important;=0D=0A  }=0D=0A=0D=0A  .content-td h2 + h1 {=0D=0A  =
+  margin-top: 0 !important;=0D=0A  }=0D=0A=0D=0A  .content-td h2 {=0D=0A   =
+ font-size: 1.1em;=0D=0A    font-weight: bold;=0D=0A    margin: 20px 0 5px;=
+=0D=0A  }=0D=0A=0D=0A  .content-td h3 ,=0D=0A  .content-td h4 ,=0D=0A  .con=
+tent-td h5 {=0D=0A    font-size: 13px;=0D=0A    font-weight: bold;=0D=0A   =
+ margin-bottom: 5px;=0D=0A  }=0D=0A=0D=0A  .content-td p {=0D=0A    margin:=
+ 0 0 15px 0;=0D=0A  }=0D=0A=0D=0A  .content-td p.no-margin {=0D=0A    margi=
+n: 0;=0D=0A    min-height: 15px;=0D=0A  }=0D=0A=0D=0A  .content-td p img,=
+=0D=0A  .content-td h1 img,=0D=0A  .content-td h2 img,=0D=0A  .content-td l=
+i img,=0D=0A  .content-td .intercom-h2b-button img {=0D=0A    margin: 0;=0D=
+=0A    padding: 0;=0D=0A    vertical-align: top;=0D=0A  }=0D=0A=0D=0A  .con=
+tent-td a {=0D=0A    color: #1251ba;=0D=0A    text-decoration: underline;=
+=0D=0A  }=0D=0A=0D=0A  .content-td .messenger-card .link {=0D=0A    margin-=
+bottom: 25px;=0D=0A  }=0D=0A=0D=0A  .content-td strong {=0D=0A    color: #6=
+06060;=0D=0A  }=0D=0A=0D=0A  .content-td ol,=0D=0A  .content-td ul {=0D=0A =
+   margin: 0 0 20px 40px;=0D=0A    padding: 0;=0D=0A    list-style: disc;=
+=0D=0A  }=0D=0A=0D=0A  .content-td ol {=0D=0A    list-style: decimal;=0D=0A=
+  }=0D=0A=0D=0A  .content-td ol li,=0D=0A  .content-td ul li {=0D=0A    mar=
+gin: 5px 0;=0D=0A  }=0D=0A=0D=0A  .content-td blockquote {=0D=0A    padding=
+: 10px 0;=0D=0A    margin: 10px 0;=0D=0A    font-style: italic;=0D=0A  }=0D=
+=0A=0D=0A  .content-td blockquote a {=0D=0A    color: #8C8C8C;=0D=0A  }=0D=
+=0A=0D=0A  .content-td img {=0D=0A    max-width: 100%;=0D=0A    margin: 15p=
+x 0 15px;=0D=0A  }=0D=0A=0D=0A  .content-td .intercom-container {=0D=0A    =
+margin-bottom: 16px;=0D=0A  }=0D=0A=0D=0A  .content-td hr {=0D=0A    border=
+: none;=0D=0A    border-top: 1px solid #DDD;=0D=0A    border-bottom: 0;=0D=
+=0A    margin: 20px 0;=0D=0A  }=0D=0A=0D=0A  .content-td table th {=0D=0A  =
+  font-weight: bold;=0D=0A    background: #F6F6F6;=0D=0A  }=0D=0A=0D=0A  .c=
+ontent-td table td,=0D=0A  .content-td table th {=0D=0A    padding: 7px 10p=
+x;=0D=0A    border: 1px solid #DADADA;=0D=0A    text-align: left;=0D=0A    =
+vertical-align: top;=0D=0A  }=0D=0A=0D=0A  .content-td table {=0D=0A    mar=
+gin-bottom: 20px;=0D=0A    border-collapse: collapse;=0D=0A    border-spaci=
+ng: 0;=0D=0A  }=0D=0A=0D=0A  .content-td table.intercom-container.intercom-=
+align-center {=0D=0A    margin-left: auto;=0D=0A    margin-right: auto;=0D=
+=0A  }=0D=0A=0D=0A  .content-td table.intercom-container td {=0D=0A    bord=
+er: none;=0D=0A    padding: 0;=0D=0A    margin: 0;=0D=0A  }=0D=0A=0D=0A  .c=
+ontent-td a.reply-in-messenger-button {=0D=0A    background-color: #286efa;=
+=0D=0A    color: white;=0D=0A    padding: 6px 25px;=0D=0A    margin: 0px 0 =
+16px 0;=0D=0A    border-radius: 20px;=0D=0A    text-decoration: none;=0D=0A=
+    display: inline-block;=0D=0A    font-size: 12px;=0D=0A  }=0D=0A=0D=0A  =
+.content-td p.reply-in-messenger-message {=0D=0A    color: #8c8c8c;=0D=0A =
+   font-size: 12px;=0D=0A    margin: 0;=0D=0A  }=0D=0A=0D=0A  table.ratings=
+,=0D=0A  .content-td .messenger-card {=0D=0A      border-collapse: separate=
+;=0D=0A      border-spacing: 0;=0D=0A      table-layout: fixed;=0D=0A      =
+border-radius: 5px;=0D=0A      border: 1px solid #dadfe3;=0D=0A      margin=
+-bottom: 0;=0D=0A  }=0D=0A=0D=0A  table.fin-reply-options {=0D=0A      bord=
+er-collapse: separate;=0D=0A      border-spacing: 0;=0D=0A      table-layou=
+t: fixed;=0D=0A      margin: 0;=0D=0A  }=0D=0A=0D=0A  td .fin-reply-button =
+{=0D=0A      color: #0A2C93;=0D=0A      text-decoration: none;=0D=0A      b=
+order: 1px solid #FFFFFF !important;=0D=0A      border-radius: 40px;=0D=0A =
+     background-color: #E7ECFE;=0D=0A      padding: 8px 16px;=0D=0A      di=
+splay: block;=0D=0A      margin-right: 10px;=0D=0A  }=0D=0A=0D=0A  td .fin-=
+reply-button-layout-updated {=0D=0A      color: #0A2C93;=0D=0A      text-de=
+coration: none;=0D=0A      border-radius: 40px;=0D=0A      background-color=
+: #E7ECFE;=0D=0A      padding: 8px 16px;=0D=0A      display: block;=0D=0A  =
+}=0D=0A=0D=0A  td .fin-reply-button:hover {=0D=0A    background-color: #D3D=
+CFF !important;=0D=0A  }=0D=0A=0D=0A  .content-td table.ratings {=0D=0A    =
+  width: 260px;=0D=0A      padding: 16px 0;=0D=0A  }=0D=0A=0D=0A  table.rat=
+ings {=0D=0A      padding: 16px 0;=0D=0A  }=0D=0A=0D=0A  .content-td .ratin=
+gs table img {=0D=0A      margin: 0;=0D=0A  }=0D=0A=0D=0A  .align_top {=0D=
+=0A    vertical-align: top;=0D=0A  }=0D=0A=0D=0A  .align_center {=0D=0A    =
+  margin: 0 auto;=0D=0A  }=0D=0A=0D=0A  /**=0D=0A   * Footer=0D=0A   */=0D=
+=0A   .smiley {=0D=0A     padding: 4px;=0D=0A   }=0D=0A   .feedback_item:fi=
+rst-child .smiley {=0D=0A     padding-left: 0;=0D=0A   }=0D=0A  .divider {=
+=0D=0A    border: none;=0D=0A    height: 1px;=0D=0A    color: #f0f0f0;=0D=
+=0A    background-color: #f0f0f0;=0D=0A    margin: 0;=0D=0A  }=0D=0A  .feed=
+back-text {=0D=0A    margin-bottom: 0.3em;=0D=0A    margin-top: 0;=0D=0A  }=
+=0D=0A  .deemphasized_text {=0D=0A    color: #8c8c8c;=0D=0A  }=0D=0A  .sent=
+_to_text {=0D=0A    font-weight: bold;=0D=0A  }=0D=0A  .dark_text {=0D=0A  =
+  color: #222;=0D=0A  }=0D=0A  .light_text {=0D=0A    color: #999;=0D=0A  }=
+=0D=0A  .align_middle {=0D=0A    vertical-align: middle !important;=0D=0A  =
+}=0D=0A=0D=0A  .history .history_content {=0D=0A    font-style: normal;=0D=
+=0A    padding-top: 1px;=0D=0A    border-left: 1px #ccc solid;=0D=0A    mar=
+gin: 0 0 0 .8ex;=0D=0A    padding-left: 1ex;=0D=0A  }=0D=0A  .history .hist=
+ory_content > *:last-child {=0D=0A    margin-bottom: 0;=0D=0A  }=0D=0A  .po=
+wered_by_badge {=0D=0A    font-size: 14px;=0D=0A  }=0D=0A  .powered_by_link=
+ {=0D=0A    color: #8c8c8c;=0D=0A    font-weight: bold;=0D=0A    text-decor=
+ation: none;=0D=0A  }=0D=0A=0D=0A  /**=0D=0A    * Email signature=0D=0A    =
+*/=0D=0A  .email_signature .container {=0D=0A      margin-inline-start: 0;=
+=0D=0A  }=0D=0A  .email_signature th {=0D=0A      font-weight: normal;=0D=
+=0A  }=0D=0A  .email_signature p,=0D=0A  .email_signature h1,=0D=0A  .email=
+_signature h2 {=0D=0A      margin: 0;=0D=0A      padding: 0;=0D=0A      tex=
+t-align: start;=0D=0A  }=0D=0A=0D=0A  .history {=0D=0A    color: #500050;=
+=0D=0A  }=0D=0A=0D=0A  /**=0D=0A   * Ticket with attributes=0D=0A   */=0D=
+=0A=0D=0A  .ticket_card {=0D=0A    border: 1px solid #E1E1E1;=0D=0A    bord=
+er-radius: 8px;=0D=0A    width: 100%;=0D=0A    max-width: 570px;=0D=0A    w=
+ord-wrap: break-word;=0D=0A  }=0D=0A=0D=0A  .ticket_card .app_logo {=0D=0A =
+     width: 100%;=0D=0A      padding: 18px 40px;=0D=0A      border-bottom: =
+1px solid #E1E1E1;=0D=0A  }=0D=0A=0D=0A  .ticket_card .app_logo img {=0D=0A=
+      height: 26px !important;=0D=0A      max-height: 26px !important;=0D=
+=0A      max-width: 100%;=0D=0A  }=0D=0A=0D=0A  .ticket_card .body {=0D=0A =
+     padding: 28px 40px;=0D=0A      font-size: 14px;=0D=0A      font-weight=
+: 400;=0D=0A      line-height: 16px;=0D=0A      width: 100%;=0D=0A  }=0D=0A=
+=0D=0A  .collapsed_ticket_card .title,=0D=0A  .ticket_card .title {=0D=0A  =
+    font-size: 18px;=0D=0A      font-weight: 700;=0D=0A      line-height: 2=
+4px;=0D=0A  }=0D=0A=0D=0A  .ticket_card .ticket_state_description {=0D=0A  =
+    font-size: 16px;=0D=0A      line-height: 20px;=0D=0A      padding-botto=
+m: 24px;=0D=0A  }=0D=0A=0D=0A  .ticket_card .ticket_state_step {=0D=0A     =
+ border-radius: 8px;=0D=0A      height: 4px;=0D=0A      margin-bottom: 8px;=
+=0D=0A  }=0D=0A=0D=0A  .ticket_card .ticket_state_submitted {=0D=0A      ba=
+ckground-color: #334bfa;=0D=0A      border-color: #334bfa;=0D=0A  }=0D=0A=
+=0D=0A  .ticket_card .ticket_state_in_progress {=0D=0A      background-colo=
+r: #b24d00;=0D=0A      border-color: #b24d00;=0D=0A  }=0D=0A=0D=0A  .ticket=
+_card .ticket_state_waiting_on_customer {=0D=0A      background-color: #db0=
+629;=0D=0A      border-color: #db0629;=0D=0A  }=0D=0A=0D=0A  .ticket_card .=
+ticket_state_resolved {=0D=0A      background-color: #0f7134;=0D=0A      bo=
+rder-color: #0f7134;=0D=0A  }=0D=0A=0D=0A  .ticket_card .ticket_custom_stat=
+e_submitted {=0D=0A      background-color: #334bfa;=0D=0A      border-color=
+: #334bfa;=0D=0A  }=0D=0A=0D=0A  .ticket_card .ticket_custom_state_in_progr=
+ess {=0D=0A      background-color: #334bfa;=0D=0A      border-color: #334bf=
+a;=0D=0A  }=0D=0A=0D=0A  .ticket_card .ticket_custom_state_waiting_on_custo=
+mer {=0D=0A      background-color: #b24d00;=0D=0A      border-color: #b24d0=
+0;=0D=0A  }=0D=0A=0D=0A  .ticket_card .ticket_custom_state_resolved {=0D=0A=
+      background-color: #0f7134;=0D=0A      border-color: #0f7134;=0D=0A  }=
+=0D=0A=0D=0A  .ticket_card .ticket_state_inactive {=0D=0A      background-c=
+olor: #DADADA;=0D=0A      border-color: #DADADA;=0D=0A  }=0D=0A=0D=0A  .tic=
+ket_card .ticket_progress {=0D=0A      font-size: 13px;=0D=0A      line-hei=
+ght: 16px;=0D=0A  }=0D=0A=0D=0A  .ticket_card .ticket_state_label_inactive =
+{=0D=0A      color: #757575;=0D=0A  }=0D=0A=0D=0A  .ticket_card .ticket_sta=
+te_label_active {=0D=0A      font-weight: 700;=0D=0A  }=0D=0A=0D=0A  .ticke=
+t_card .ticket_state_label {=0D=0A      margin-bottom: 4px;=0D=0A  }=0D=0A=
+=0D=0A  .ticket_custom_state .label {=0D=0A      font-size: 16px;=0D=0A    =
+  font-style: normal;=0D=0A      font-weight: 700;=0D=0A      line-height: =
+30px;=0D=0A  }=0D=0A=0D=0A  .ticket_custom_state .submitted {=0D=0A      co=
+lor: #334bfa;=0D=0A  }=0D=0A=0D=0A  .ticket_custom_state .in_progress {=0D=
+=0A      color: #334bfa;=0D=0A  }=0D=0A=0D=0A  .ticket_custom_state .waitin=
+g_on_customer {=0D=0A      color: #b24d00;=0D=0A  }=0D=0A=0D=0A  .ticket_cu=
+stom_state .resolved {=0D=0A      color: #0f7134;=0D=0A  }=0D=0A=0D=0A  .ti=
+cket_card .attribute_name {=0D=0A      font-weight: 600;=0D=0A      word-wr=
+ap: break-word;=0D=0A  }=0D=0A=0D=0A  [dir=3D"rtl"] .ticket_card .ticket_st=
+ate_spacing {=0D=0A      padding-left: 8px;=0D=0A  }=0D=0A=0D=0A  [dir=3D"l=
+tr"] .ticket_card .ticket_state_spacing {=0D=0A      padding-right: 8px;=0D=
+=0A  }=0D=0A=0D=0A  [dir=3D"rtl"] .ticket_card .attribute_name {=0D=0A     =
+ padding: 8px 0 8px 16px;=0D=0A  }=0D=0A=0D=0A  [dir=3D"ltr"] .ticket_card =
+.attribute_name {=0D=0A      padding: 8px 16px 8px 0;=0D=0A  }=0D=0A=0D=0A=
+  .ticket_card .attribute_value {=0D=0A      word-wrap: break-word;=0D=0A  =
+    padding: 8px 0;=0D=0A  }=0D=0A=0D=0A  .ticket_card .ticket_description =
+{=0D=0A      padding-bottom: 24px;=0D=0A  }=0D=0A=0D=0A  .reply_in_messenge=
+r_card {=0D=0A    background: #F5F5F5;=0D=0A    border-radius: 8px;=0D=0A  =
+  width: 100%;=0D=0A    max-width: 570px;=0D=0A    word-wrap: break-word;=
+=0D=0A    padding: 16px;=0D=0A  }=0D=0A=0D=0A  .reply_in_messenger_card .ti=
+tle {=0D=0A    font-size: 16px;=0D=0A    font-weight: 600;=0D=0A    line-he=
+ight: 24px;=0D=0A    word-wrap: break-word;=0D=0A  }=0D=0A=0D=0A  .reply_in=
+_messenger_card .body {=0D=0A    font-size: 14px;=0D=0A    font-weight: 400=
+;=0D=0A    line-height: 20px;=0D=0A    word-wrap: break-word;=0D=0A    padd=
+ing-top: 8px;=0D=0A  }=0D=0A=0D=0A  .chat_notification_container {=0D=0A   =
+ width: 100%;=0D=0A    max-width: 570px;=0D=0A    font-size: 14px;=0D=0A   =
+ font-weight: 400;=0D=0A    line-height: 20px;=0D=0A    word-wrap: break-wo=
+rd;=0D=0A  }=0D=0A=0D=0A  [dir=3D"rtl"] .chat_notification_container .admin=
+_avatar_wrapper {=0D=0A    padding-left: 16px;=0D=0A  }=0D=0A=0D=0A  [dir=
+=3D"rtl"] .chat_notification_container .user_avatar_wrapper {=0D=0A      pa=
+dding-right: 16px;=0D=0A  }=0D=0A=0D=0A  [dir=3D"ltr"] .chat_notification_c=
+ontainer .admin_avatar_wrapper {=0D=0A      padding-right: 16px;=0D=0A  }=
+=0D=0A=0D=0A  [dir=3D"ltr"] .chat_notification_container .user_avatar_wrapp=
+er {=0D=0A      padding-left: 16px;=0D=0A  }=0D=0A=0D=0A  [dir=3D"ltr"] .ch=
+at_notification_container .message_bubble {=0D=0A      margin-left: auto;=
+=0D=0A  }=0D=0A=0D=0A  [dir=3D"rtl"] .chat_notification_container .message_=
+bubble {=0D=0A      margin-right: auto;=0D=0A  }=0D=0A=0D=0A  .chat_notific=
+ation_container .user_avatar_wrapper .initials_avatar {=0D=0A      border-r=
+adius: 100px;=0D=0A      color: white;=0D=0A      font-size: 12px;=0D=0A   =
+   height: 28px;=0D=0A      line-height: 28px;=0D=0A      width: 28px;=0D=
+=0A      text-align: center;=0D=0A  }=0D=0A=0D=0A  .chat_notification_conta=
+iner .comment_wrapper {=0D=0A    padding: 12px 16px;=0D=0A    border-radius=
+: 10px;=0D=0A    background: #F5F5F5;=0D=0A  }=0D=0A=0D=0A  .chat_notificat=
+ion_container .comment_wrapper p {=0D=0A    margin: 0;=0D=0A  }=0D=0A=0D=0A=
+  .chat_notification_container .brand_logo img {=0D=0A      height: 26px !i=
+mportant;=0D=0A      max-height: 26px !important;=0D=0A      max-width: 100=
+%;=0D=0A  }=0D=0A=0D=0A  .chat_notification_container .comment_wrapper img =
+{=0D=0A    max-width: 100% !important;=0D=0A  }=0D=0A=0D=0A  .collapsed_tic=
+ket_card {=0D=0A    border: 1px solid #E1E1E1;=0D=0A    border-radius: 8px;=
+=0D=0A    padding: 12px 20px;=0D=0A  }=0D=0A=0D=0A  .align_middle {=0D=0A  =
+  vertical-align: middle;=0D=0A  }=0D=0A=0D=0A  @media (max-width: 768px) {=
+=0D=0A    .ticket_card .app_logo {=0D=0A      padding: 18px !important;=0D=
+=0A    }=0D=0A=0D=0A    .ticket_card .body {=0D=0A      padding: 18px !impo=
+rtant;=0D=0A    }=0D=0A=0D=0A    [dir=3D"rtl"] .ticket_card .ticket_state_s=
+pacing {=0D=0A      padding-left: 2px !important;=0D=0A    }=0D=0A=0D=0A   =
+ [dir=3D"ltr"] .ticket_card .ticket_state_spacing {=0D=0A      padding-righ=
+t: 2px !important;=0D=0A    }=0D=0A=0D=0A    .ticket_card .ticket_state_spa=
+cing {=0D=0A      padding-right: 2px !important;=0D=0A    }=0D=0A=0D=0A    =
+.ticket_card .ticket_description {=0D=0A      padding-bottom: 16px !import=
+ant;=0D=0A    }=0D=0A=0D=0A    .fin-reply-options table,=0D=0A    .fin-repl=
+y-options tbody,=0D=0A    .fin-reply-options th,=0D=0A    .fin-reply-option=
+s td,=0D=0A    .fin-reply-options tr {=0D=0A      display: block;=0D=0A    =
+}=0D=0A=0D=0A    .fin-reply-options,=0D=0A    .fin-reply-options td {=0D=0A=
+      width: 100%;=0D=0A    }=0D=0A=0D=0A    .fin-reply-button-wrapper {=0D=
+=0A      padding: 0 !important;=0D=0A    }=0D=0A=0D=0A    td .fin-reply-but=
+ton {=0D=0A      margin: 4px 0 !important;=0D=0A    }=0D=0A  }=0D=0A=0D=0A<=
+/style>=0D=0A=0D=0A<!-- Outlook.com -->=0D=0A<style type=3D"text/css" data-=
+premailer=3D"ignore">=0D=0A  .content-td blockquote + * {=0D=0A    margin-t=
+op: 10px !important;=0D=0A  }=0D=0A=0D=0A  .ExternalClass .content-td h1 {=
+=0D=0A    padding: 15px 0 5px 0 !important;=0D=0A  }=0D=0A=0D=0A  .External=
+Class .content-td h2 {=0D=0A    padding: 0 0 5px 0 !important;=0D=0A  }=0D=
+=0A=0D=0A  .ExternalClass .content-td p {=0D=0A    padding: 10px 0 !importa=
+nt;=0D=0A  }=0D=0A=0D=0A  .ExternalClass .content-td hr + * {=0D=0A    padd=
+ing-top: 20px !important;=0D=0A  }=0D=0A=0D=0A  .ExternalClass .content-td =
+.intercom-container {=0D=0A    padding: 5px 0 !important;=0D=0A  }=0D=0A=
+=0D=0A  .ExternalClass .content-td ol ,=0D=0A  .ExternalClass .content-td u=
+l {=0D=0A    padding: 0 0 20px 40px !important;=0D=0A    margin: 0 !importa=
+nt;=0D=0A  }=0D=0A=0D=0A  img {=0D=0A    max-width: 600px !important;=0D=0A=
+  }=0D=0A  @media (max-width: 600px) {=0D=0A    img {=0D=0A      max-width:=
+ 100% !important;=0D=0A    }=0D=0A  }=0D=0A</style>=0D=0A=0D=0A=0D=0A<!-- O=
+utlook fix -->=0D=0A=0D=0A<!--[if gte mso 9]>=0D=0A    <style type=3D"text/=
+css">=0D=0A      table {=0D=0A        border-collapse: collapse !important;=
+=0D=0A      }=0D=0A      td {=0D=0A        border-collapse: collapse !impor=
+tant;=0D=0A      }=0D=0A    </style>=0D=0A<![endif]-->=0D=0A=0D=0A</head>=
+=0D=0A=0D=0A<body id=3D"admin_reply" dir=3D"ltr">=0D=0A<div style=3D"color:=
+transparent;visibility:hidden;opacity:0;font-size:0px;border:0;max-height:1=
+px;width:1px;margin:0px;padding:0px;border-width:0px!important;display:none=
+!important;line-height:0px!important;"><img border=3D"0" width=3D"1" height=
+=3D"1" src=3D"https://lovable-a5bfb992d59b.intercom-mail.com/q/Y1ayZbXFZ7J9=
+AcGCjN6eYw~~/AAAAARA~/-HxBfp02mio8FgYJOg18K6o6S2X4h6TQlm3NQxBireI6jsCxQHZxo=
+u3lJJSiQ1L7V7sUV-rbhW9yjU7I4m832rg-2--tSIDRMjQyJJ4F5CA~" alt=3D""/></div>=
+=0D=0A=0D=0A  <table cellspacing=3D"0" border=3D"0" cellpadding=3D"0" align=
+=3D"center" bgcolor=3D"transparent" class=3D"main" style=3D"font-family: He=
+lvetica, Arial, sans-serif; letter-spacing: 0; width: 100%; border-spacing:=
+ 0; border-collapse: separate; table-layout: fixed;">=0D=0A    <tbody>=0D=
+=0A        <tr>=0D=0A  <td style=3D"font-family: Helvetica, Arial, sans-ser=
+if; padding: 0;">=0D=0A    <table id=3D"reply_email" style=3D"table-layout:=
+ auto; border-spacing: 0; border-collapse: separate;">=0D=0A      <tbody>=
+=0D=0A=0D=0A      <tr>=0D=0A        <td class=3D"content-td" style=3D"font-=
+family: Helvetica, Arial, sans-serif; line-height: 20px; font-size: 14px; p=
+adding: 0 0 16px;">=0D=0A              <div style=3D"margin-top: 0; padding=
+-top: 0;">=0D=0A<p style=3D"margin: 0 0 15px;">Hi Enzo,</p>=0D=0A<p style=
+=3D"margin: 0 0 15px;">This is indeed a known bug with GitHub username chan=
+ges that we're actively working to fix.</p>=0D=0A<p style=3D"margin: 0 0 15=
+px;">Since standard workarounds haven't resolved it, try this complete rese=
+t approach:</p>=0D=0A<p style=3D"margin: 0 0 15px;"><b>Complete GitHub Inte=
+gration Reset:</b></p>=0D=0A<ol style=3D"list-style-type: decimal; margin: =
+0 0 20px 40px; padding: 0;">=0D=0A<li style=3D"margin: 5px 0;">Go to GitHub=
+ =E2=86=92 Settings =E2=86=92 Applications =E2=86=92 Installed GitHub Apps =
+=E2=86=92 Lovable.dev =E2=86=92 Uninstall</li>=0D=0A<li style=3D"margin: 5p=
+x 0;">Also check Settings =E2=86=92 Applications =E2=86=92 Authorized OAuth=
+ Apps =E2=86=92 Remove any Lovable entries</li>=0D=0A<li style=3D"margin: 5=
+px 0;">In your remixed project, go to Project Settings =E2=86=92 GitHub and=
+ disconnect if still showing connected</li>=0D=0A<li style=3D"margin: 5px 0=
+;">Wait 5-10 minutes, then reconnect via the GitHub icon in Lovable</li>=0D=
+=0A</ol>=0D=0A<p style=3D"margin: 0 0 15px;"><b>Alternative Path - Fresh St=
+art:</b></p>=0D=0A<p style=3D"margin: 0 0 15px;">Create another remix and c=
+onnect it to a completely new repository name that you've never used before=
+.</p>=0D=0A<p style=3D"margin: 0 0 15px;">The username change creates deep=
+ integration mismatches that sometimes require this complete reset.</p>=0D=
+=0A<p style=3D"margin: 0 0 15px;">Did this complete reset approach work for=
+ you=3F</p>=0D=0A<p style=3D"margin: 0 0 15px;">This answer was composed by=
+ Lovable Support, Lovable's AI Agent.</p>=0D=0A</div>=0D=0A              <t=
+able height=3D"100px" class=3D"fin-reply-options" style=3D"width: 350px; bo=
+rder-spacing: 6px; border-radius: 12px; background-color: #FAFAF7; border-c=
+ollapse: separate; table-layout: fixed; margin: 0; border: 1px solid #E4E5E=
+1;" bgcolor=3D"#FAFAF7">=0D=0A  <tbody>=0D=0A  <tr>=0D=0A    <td style=3D"l=
+ine-height: 0px; font-size: 1px; font-family: Helvetica, Arial, sans-serif;=
+ text-align: left; vertical-align: top; padding: 0; border: 1px none #DADAD=
+A;" align=3D"left" valign=3D"top">=0D=0A      <a href=3D"https://app.interc=
+om.com/ai_agent_email_feedback/honeypot=3Fapp_id=3D2482910&conversation_id=
+=3D215469738363311&quick_reply_part_id=3D26095992543" style=3D"outline: non=
+e !important; color: #1251ba; text-decoration: underline; border-style: non=
+e;">=C2=A0</a>=0D=0A    </td>=0D=0A  </tr>=0D=0A  <tr style=3D"text-align: =
+start;" align=3D"start">=0D=0A    <td style=3D"font-size: 14px; color: #222=
+222; text-align: left; font-weight: 400; font-family: Helvetica, Arial, san=
+s-serif; vertical-align: top; padding: 0 12px; border: 1px none #DADADA;" a=
+lign=3D"left" valign=3D"top">=0D=0A      Let us know if that helped or repl=
+y to this email =E2=9C=8D=F0=9F=8F=BC=0D=0A    </td>=0D=0A  </tr>=0D=0A  <t=
+r>=0D=0A    <td style=3D"font-family: Helvetica, Arial, sans-serif; text-al=
+ign: left; vertical-align: top; padding: 0; border: 1px none #DADADA;" alig=
+n=3D"left" valign=3D"top">=0D=0A      <table class=3D"fin-reply-options" st=
+yle=3D"border-spacing: 0; border-collapse: separate; table-layout: fixed; m=
+argin: 0; padding: 4px 12px 12px;">=0D=0A        <tr>=0D=0A            <td =
+style=3D"width: 50%; text-align: center; font-family: Helvetica, Arial, san=
+s-serif; vertical-align: top; padding: 0 16px 0 0; border: 1px none #DADADA=
+;" class=3D"fin-reply-button-wrapper" align=3D"center" valign=3D"top">=0D=
+=0A              <a href=3D"https://app.intercom.com/ai_agent_email_feedbac=
+k=3Fapp_id=3D2482910&conversation_id=3D215469738363311&quick_reply_part_id=
+=3D26095992543&reply_option_uuid=3D870fbca3-a1dd-4102-a611-dacf498867d7" cl=
+ass=3D"fin-reply-button-layout-updated" style=3D"outline: none !important; =
+color: #0A2C93; text-decoration: none; border-radius: 40px; background-colo=
+r: #E7ECFE; display: block; padding: 8px 16px; border-style: none;">=0D=0A =
+               <b>That answered my question</b>=0D=0A              </a>=0D=
+=0A            </td>=0D=0A            <td style=3D"width: 50%; text-align: =
+center; font-family: Helvetica, Arial, sans-serif; vertical-align: top; pad=
+ding: 0 16px 0 0; border: 1px none #DADADA;" class=3D"fin-reply-button-wrap=
+per" align=3D"center" valign=3D"top">=0D=0A              <a href=3D"https:/=
+/app.intercom.com/ai_agent_email_feedback=3Fapp_id=3D2482910&conversation_i=
+d=3D215469738363311&quick_reply_part_id=3D26095992543&reply_option_uuid=3D3=
+0cb36e5-8a8f-482e-8923-ae8e59d758bb" class=3D"fin-reply-button-layout-updat=
+ed" style=3D"outline: none !important; color: #0A2C93; text-decoration: non=
+e; border-radius: 40px; background-color: #E7ECFE; display: block; padding:=
+ 8px 16px; border-style: none;">=0D=0A                <b>Talk to a person</=
+b>=0D=0A              </a>=0D=0A            </td>=0D=0A        </tr>=0D=0A =
+     </table>=0D=0A    </td>=0D=0A  </tr>=0D=0A  </tbody>=0D=0A</table>=0D=
+=0A        </td>=0D=0A      </tr>=0D=0A=0D=0A=0D=0A        <tr>=0D=0A      =
+      <td style=3D"font-family: Helvetica, Arial, sans-serif; padding: 0;">=
+=0D=0A              <div class=3D"email_signature" style=3D"padding-bottom:=
+ 24px; padding-top: 8px;">=0D=0A                <table border=3D"0" style=
+=3D"border-spacing: 0; border-collapse: separate; table-layout: fixed;">=0D=
+=0A  <tbody>=0D=0A    <tr>=0D=0A      <td valign=3D"top" width=3D"100" styl=
+e=3D"font-family: Helvetica, Arial, sans-serif; padding: 0;"><img width=3D"=
+100" height=3D"100" src=3D"https://downloads.intercomcdn.com/i/o/teb21d17/1=
+503796992/1c19589eadc10f01fa448d63760e/Lovable+Logo+%281%29.png=3Fexpires=
+=3D1767189312&amp;signature=3D817b72cc05513b752298cdcd442801d96c8231a4e50af=
+996f752a7c528879e9d&amp;req=3DdSUnFc53m4hWW%2FMW2XS%2FiUvOqj%2Fa2fYax7e%2Fh=
+mSo1q3WaNKYiICnVecbSNju%0A%2BOLZlxtHRAQ%3D%0A"></td>=0D=0A      <td width=
+=3D"4" style=3D"font-family: Helvetica, Arial, sans-serif; padding: 0;"></t=
+d>=0D=0A      <td valign=3D"top" style=3D"font-family: Helvetica, Arial, sa=
+ns-serif; padding: 0;">=0D=0A<p style=3D"text-align: start; margin: 0; padd=
+ing: 0;" align=3D"start"><b>Lovable Support from <a href=3D"https://lovable=
+.dev/support" rel=3D"nofollow noopener noreferrer" target=3D"_blank" class=
+=3D"intercom-content-link" style=3D"outline: none !important; border-style:=
+ none;">Lovable Support</a></b></p>=0D=0ATry <a href=3D"https://lovable.dev=
+/" rel=3D"nofollow noopener noreferrer" target=3D"_blank" class=3D"intercom=
+-content-link" style=3D"outline: none !important; border-style: none;">lova=
+ble.dev</a>=0D=0A</td>=0D=0A    </tr>=0D=0A  </tbody>=0D=0A</table>=0D=0A=
+=0D=0A              </div>=0D=0A            </td>=0D=0A        </tr>=0D=0A=
+=0D=0A        <tr>=0D=0A          <td class=3D"content-td" style=3D"font-fa=
+mily: Helvetica Neue, Arial, sans-serif; font-size: 14px; color: #646462; l=
+ine-height: 20px; text-align: justify; border-top-width: 1px; border-top-co=
+lor: #E4E5E1; border-top-style: solid; padding: 16px 0;" align=3D"justify">=
+=0D=0A              =0D=0A              =0D=0A              =0D=0A         =
+     =0D=0A          </td>=0D=0A        </tr>=0D=0A=0D=0A      =0D=0A      =
+<tr height=3D"32"></tr>=0D=0A      </tbody>=0D=0A    </table>=0D=0A    <tab=
+le style=3D"border-spacing: 0; border-collapse: separate; table-layout: fix=
+ed;">=0D=0A      <tbody>=0D=0A        <tr>=0D=0A          <td style=3D"font=
+-family: Helvetica, Arial, sans-serif; padding: 0;">=0D=0A            <div =
+dir=3D"ltr">=0D=0A              =0D=0A            </div>=0D=0A          </t=
+d>=0D=0A        </tr>=0D=0A      </tbody>=0D=0A    </table>=0D=0A  </td>=0D=
+=0A</tr>=0D=0A=0D=0A    </tbody>=0D=0A  </table>=0D=0A<img src=3D"https://l=
+ovable-a5bfb992d59b.intercom-mail.com/via/o=3Fh=3Da66bdd815006419aa8a7155fd=
+8263590e618b50d-teb21d17_215469738363311_26095991797" width=3D"1" height=3D=
+"1" style=3D"display: block;" alt=3D"intercom">=0D=0A=0D=0A<img border=3D"0=
+" width=3D"1" height=3D"1" alt=3D"" src=3D"https://lovable-a5bfb992d59b.int=
+ercom-mail.com/q/XBvnSGaXYMVz9jehRDmspA~~/AAAAARA~/ObTW3y6FBwQtulUnFplVwzS3=
+7UR6oLmRG03AA1Tp1SqDliAkpslidrvXTO6ooEJ95LmWDIT9bPZsRh1tpbHdjp7nAU5cBTeRtQ_=
+mU20EGwM~">=0D=0A</body>=0D=0A</html>
+--_----Lv++Er5KO/LgytO7bVExnA===_CF/AD-25468-7940C686--
+
