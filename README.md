@@ -244,3 +244,4 @@ O mesmo acontece quando passamos arrays como parâmetros para funções: a refer
 Para evitar a modificação do array original ao passá-lo para uma função, podemos usar o spread operator (...) para criar uma cópia do array.
 
 ## Objetos
+Na programação, especialmente na programação orientada a objetos (POO), um objeto pode ser entendido como uma entidade que representa algo do mundo real dentro do programa. Ele é composto por atributos (que descrevem suas características) e métodos (que definem os comportamentos ou ações que ele pode realizar).
