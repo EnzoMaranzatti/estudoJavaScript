@@ -11,7 +11,7 @@ Este repositório contém meus estudos, anotações e exemplos práticos em Java
 - [Array](#array)
 - [Funções Callback](#funções-callback)
 - [Spread Operator](#spread-operator)
-- [Objetos](#objetos)
+- [Objetos Lineares](#objetos-lineares)
 - [JSON](#json)
 - [Node.js e Módulos](#nodejs-e-módulos)
 
