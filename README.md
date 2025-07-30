@@ -1,7 +1,21 @@
 
-# Estudando JavaScript
+# **Estudando JavaScript**
+Este repositório contém meus estudos, anotações e exemplos práticos em JavaScript, organizados por tópicos fundamentais da linguagem. Ele serve como material de revisão pessoal e guia de consulta para outros estudantes.
 
-## Escopo
+## **Glossário**
+
+- [Escopo](#escopo)
+- [Funções](#funções)
+- [Coerção de Tipos](#coerção-de-tipos)
+- [Conversão de Tipos](#conversão-de-tipos)
+- [Array](#array)
+- [Funções Callback](#funções-callback)
+- [Spread Operator](#spread-operator)
+- [Objetos](#objetos)
+- [JSON](#json)
+- [Node.js e Módulos](#nodejs-e-módulos)
+
+## **Escopo**
 Por padrão o **JavaScript** ao declarar variável sem a palavra reservada o interpretador indentifica com um **`var`**
 
 - `var` Escopo global
@@ -12,15 +26,15 @@ Espoco é o contexto atual de execução, em que valores e expressões são vis�
 
 Um function serve como um procedimento em JavaScript, e portanto cria um escopo, de modo que (por exemplo) uma variável definida exclusivamente dentro  de uma função não pode ser acessada de fora da função ou dentro de outras funções.
 
-## Funções
+## **Funções**
 
 **Expressão de função:** Quando usamos expressão de função, ou seja, declarar o valor da função a uma variável, ele é lido apenas quando o interpretador chega ao código, sendo assim, caso declare um console.log() antes da função ocorrerá um erro, dizendo que a função não existe. Porém ao declarar uma função normalmente, sem variáveis, o interpretador aplica o efeito **"hoisting"** (puxando para cima). Sendo assim o interpretador não precisa chegar na linha do código da função para ele ser executado, ela já é executada primeiro internamente.
 
-**Função padrão**
+#### Função padrão
 
 `function minhaFuncao() { ... }`
 
-**Expressão de função**
+#### Expressão de função
 
 ``` 
 const minhaFuncao = function() { ... } 
@@ -29,7 +43,7 @@ var minhaFuncao = function() { ... }
 
 ```
 
-**Arrow function**
+#### Arrow function
 
 ```
 const media = (nota1, nota2) => {
@@ -65,7 +79,7 @@ Se você quiser retornar mais de um valor, precisa empacotar esses valores em:
 
 - Um array: útil quando a posição dos valores é mais importante que o nome (menos legível, mas mais compacto). 
 
-## Coerção de Tipos
+## **Coerção de Tipos**
 A Coerção de Tipos em JavaScript refere-se à conversão automática e implícita de um tipo de dado para outro durante a operação. Isso pode acontecer em operações matemáticas, comparações ou concatenações de string.
 
 **Exemplo:**
@@ -83,7 +97,7 @@ console.log("10" - 2); // 8
 // A string "10" é convertida implicitamente para número para realizar a subtração
 ```
 
-## Conversão de Tipos
+## **Conversão de Tipos**
 A Conversão de Tipos é a transformação explícita de um tipo de dado para outro. Isso pode ser feito de várias maneiras, como utilizando funções ou operadores específicos para converter um tipo em outro.
 
 **Exemplo:**
@@ -108,7 +122,7 @@ console.log(typeof convertido); // "number"
 
 ```
 
-## Array - Métodos de manipulações de array
+## **Array**
 
 | Método      | O que faz                                          | Exemplo                            | Resultado     |
 | ----------- | -------------------------------------------------- | ---------------------------------- | ------------- |
@@ -135,7 +149,7 @@ console.log(typeof convertido); // "number"
 | `flat`      | “achata” arrays aninhados                          | `[1,[2,3]].flat()`                 | `[1,2,3]`     |
 | `concat`    | junta dois arrays                                  | `arr.concat([4,5])`                | `[1,2,3,4,5]` |
 
-### Digas extras
+### *Digas extras*
 
 **Como remover nomes repetidos de uma lista de chamada:**
 
@@ -159,7 +173,7 @@ Passo a passo:
 
 Não podemos declarar o Set sem chamar o `new`
 
-## Funções Callback
+## **Funções Callback**
 
 Uma função callback é uma função que é passada como argumento para outra função e é executada após a ocorrência de um evento ou a conclusão de uma operação assíncrona.
 
@@ -181,10 +195,10 @@ nomes.forEach(nome => {
 
 ```
 
-## Spread Operator
+## **Spread Operator**
 O spread operator em JavaScript é representado por `...` (três pontos) e serve para espalhar (ou "espalhar o conteúdo") de arrays, objetos, ou até strings em partes individuais.
 
-### Spread com array
+### *Spread com array*
 
 **1. Clonar um array:**
 ```
@@ -210,7 +224,7 @@ const alimentos = [...frutas, ...doces];
 console.log(alimentos); // ['maçã', 'banana', 'chocolate', 'bala']
 ```
 
-### Spread com Objetos (ECMAScript 2018+)
+### *Spread com Objetos (ECMAScript 2018+)*
 
 **1. Clonar um objeto:**
 ```
@@ -231,20 +245,20 @@ console.log(dadosCompletos);
 ```
 **Observação importante:** Se dois objetos tiverem a mesma chave, o último sobrescreve o valor anterior
 
-### Atribuição por Valor:
+### *Atribuição por Valor:*
 Quando atribuímos um tipo primitivo a uma nova variável, o JavaScript cria uma cópia do valor.
 
 Alterar o valor da nova variável não afeta a variável original.
 O mesmo ocorre quando passamos tipos primitivos como parâmetros para funções: uma cópia do valor é passada, e a alteração do parâmetro dentro da função não modifica a variável original.
 
-### Atribuição por Referência:
+### *Atribuição por Referência:*
 Arrays não são tipos primitivos, então, ao atribuir um array a uma nova variável, o JavaScript cria uma referência, não uma cópia.
 Ambas as variáveis apontam para o mesmo local na memória.
 Modificar o array através de qualquer uma das variáveis afeta ambas.
 O mesmo acontece quando passamos arrays como parâmetros para funções: a referência do array é passada, e as alterações dentro da função afetam o array original.
 Para evitar a modificação do array original ao passá-lo para uma função, podemos usar o spread operator (...) para criar uma cópia do array.
 
-## Objetos
+## **Objetos Lineares**
 Na programação, especialmente na programação orientada a objetos (POO), um objeto pode ser entendido como uma entidade que representa algo do mundo real dentro do programa. Ele é composto por atributos (que descrevem suas características) e métodos (que definem os comportamentos ou ações que ele pode realizar).
 
 **Estrutura básica:**
@@ -254,7 +268,7 @@ const obj = {
     atributo: valor,
 }
 ```
-### Acessando um objeto
+### *Acessando um objeto*
 ```
 const estudante = {
    nome: 'Jose Silva',
@@ -268,7 +282,7 @@ Para acessar um atributo de um objeto em JavaScript, temos duas formas principai
 - `estudante.nome`
 - `estudante["nome"]`
 
-### Mais sobre objetos
+### *Mais sobre objetos*
 - Para deletar um atributo de um objeto usamos `delete` da seguinte forma:
 `delete obj.atibuto;`
 
@@ -320,7 +334,7 @@ for (let prop in pessoa) {
 
 O for...in percorre também propriedades herdadas da cadeia de protótipos.
 
-## JSON
+## **JSON**
 
 JSON (JavaScript Object Notation) é um formato leve de troca de dados, fácil de ler e escrever para humanos e fácil de interpretar e gerar por máquinas. Ele é amplamente usado na comunicação entre sistemas, especialmente em aplicações web que trocam dados entre o cliente (navegador) e o servidor.
 
@@ -346,7 +360,7 @@ JSON (JavaScript Object Notation) é um formato leve de troca de dados, fácil d
 - Os valores podem ser: string, número, booleano, array, objeto ou null
 - Não é permitido comentários (diferente de outras linguagens).
 
-### Mais sobre JSON em JavaScript
+### *Mais sobre JSON em JavaScript*
 Caso você já tenha um arquivo JSON em seu repositório e esteja programando em um ambiente diretamente em Node.js você pode importar o JSON no seu arquivo JavaScript usando `require()`. 
 
 Se você estiver usando JavaScript em um ambiente de navegador (por exemplo, com HTML), o require() não está disponível por padrão. Nesse caso, você teria que:
@@ -366,4 +380,107 @@ Levando em consideração que estamos em um ambiente Node.js e temos um arquivo 
 | `JSON.parse(str)`     | Converte uma string JSON em um objeto JavaScript | `JSON.parse('{"nome":"Ana"}')`    | `{ nome: "Ana" }`  |
 
 
-## Node
+## **Node**
+
+Tipos de importação em JavaScript (ES Modules) 
+### *Export*
+É uma palavra-chave usada para tornar variáveis, funções, classes ou outros objetos disponíveis para serem usados em outros módulos JavaScript.
+#### Como funciona
+**Exportação Nomeada:** Você pode exportar múltiplos itens de um módulo, dando a cada um um nome.
+
+```
+// arquivo: meu-modulo.js
+export const PI = 3.14159;
+export function areaCirculo(raio) {
+    return PI * raio * raio;
+}
+```
+
+**Exportação Padrão (Default):** Você pode ter apenas uma exportação padrão por módulo. Isso é útil quando o módulo tem uma única funcionalidade principal.
+
+```
+// arquivo: utilitario.js
+export default function utilitario() {
+    console.log("Função utilitária");
+}
+```
+
+**Quando usar:** Use export quando você quer que outros arquivos usem as funcionalidades que você está criando no seu módulo.
+
+### *Import*
+`import` é uma palavra-chave usada para trazer variáveis, funções, classes ou outros objetos que foram exportados de outros módulos JavaScript.
+
+#### Como funciona
+
+**Importação Nomeada:** Você especifica os nomes exatos dos itens que você quer importar entre chaves **`{}`**.
+
+```
+// arquivo: principal.js
+import { PI, areaCirculo } from './meu-modulo.js';
+
+console.log(PI); // Saída: 3.14159
+console.log(areaCirculo(5)); // Saída: 78.53975
+```
+
+**Importação Padrão (Default):** Você importa a exportação padrão sem usar chaves.
+
+```
+// arquivo: principal.js
+import utilitario from './utilitario.js';
+
+utilitario(); // Saída: Função utilitária
+```
+
+**Importação com Alias:** Você pode dar um novo nome a um item importado usando **`as`**.
+
+```
+import { areaCirculo as area } from './meu-modulo.js';
+
+console.log(area(5)); // Saída: 78.53975
+```
+
+**Importação do Módulo Inteiro:** Você pode importar todo o módulo como um objeto.
+
+```
+import * as modulo from './meu-modulo.js';
+
+console.log(modulo.PI); // Saída: 3.14159
+console.log(modulo.areaCirculo(5)); // Saída: 78.53975
+```
+
+**Quando usar:** Use import quando você precisa usar funcionalidades que foram criadas e exportadas em outros módulos.
+
+### *Module.exports*
+`module.exports` é um objeto especial no Node.js que permite exportar valores de um arquivo para que outros arquivos possam usá-los.
+
+#### Como funciona
+Você atribui o que você quer exportar a `module.exports.`
+
+```
+// arquivo: meu-modulo.js
+function minhaFuncao() {
+    console.log("Minha função");
+}
+
+module.exports = minhaFuncao;
+```
+
+**Quando usar:** Use module.exports em Node.js quando você quer exportar uma única função, objeto ou valor.
+
+### *Require*
+`require` é uma função no Node.js usada para importar módulos que foram exportados usando `module.exports.`
+
+#### Como funciona
+Você passa o caminho do arquivo que você quer importar para a função `require.`
+
+```
+// arquivo: principal.js
+const minhaFuncao = require('./meu-modulo.js');
+
+minhaFuncao(); // Saída: Minha função
+```
+
+**Quando usar:** Use require em Node.js para importar módulos que foram exportados usando module.exports.
+
+### *Package.json*
+`package.json` é um arquivo de configuração no formato JSON que contém metadados sobre um projeto Node.js. Ele inclui informações como o nome do projeto, versão, descrição, dependências, scripts e outras configurações.
