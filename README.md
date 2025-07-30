@@ -4,7 +4,7 @@ Este repositório contém meus estudos, anotações e exemplos práticos em Java
 
 ## **Glossário**
 
-- [Escopo](#escopo)
+- [Escopo](#escopo) 
 - [Funções](#funções)
 - [Coerção de Tipos](#coerção-de-tipos)
 - [Conversão de Tipos](#conversão-de-tipos)
@@ -13,7 +13,7 @@ Este repositório contém meus estudos, anotações e exemplos práticos em Java
 - [Spread Operator](#spread-operator)
 - [Objetos Lineares](#objetos-lineares)
 - [JSON](#json)
-- [Node.js e Módulos](#nodejs-e-módulos)
+- [Node](#node)
 
 ## **Escopo**
 Por padrão o **JavaScript** ao declarar variável sem a palavra reservada o interpretador indentifica com um **`var`**
