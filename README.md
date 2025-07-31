@@ -579,6 +579,50 @@ maria.falar(); // Meu nome é Maria
 - Aqui, this.nome → pega o nome da própria maria
 - `this` dentro do método falar() é o objeto maria
 
+### *Call()*
+O método `call()` permite invocar uma função e especificar o valor de this manualmente, passando os argumentos um por um.
+
+```
+function apresenta(idade) {
+  console.log(`Olá, meu nome é ${this.nome} e tenho ${idade} anos.`);
+}
+
+const pessoa = { nome: "João" };
+
+apresenta.call(pessoa, 30);
+// "Olá, meu nome é João e tenho 30 anos."
+```
+call() chamou a função apresenta e definiu que o this dentro dela será o objeto pessoa.
+
+### *Apply()*
+`apply()` é igual ao call(), mas os argumentos são passados dentro de um array.
+
+#### Forma
+
+`func.apply(thisArg, [arg1, arg2, ...])`
+
+#### Exemplo
+
+```
+apresenta.apply(pessoa, [25]);
+// "Olá, meu nome é João e tenho 25 anos."
+```
+
+### *Bind()*
+`bind()` é diferente de `call()` e `apply()` porque ele não executa a função imediatamente. Em vez disso, ele cria uma nova função com o this fixo no objeto que você passou.
+
+#### Forma
+`const novaFunc = func.bind(thisArg, arg1, arg2, ...);`
+
+#### Exemplo
+```
+const novaFuncao = apresenta.bind(pessoa);
+novaFuncao(40); 
+// "Olá, meu nome é João e tenho 40 anos."
+```
+
+
+
 ### *Class*
 `class` é um molde (modelo) para criar vários objetos com as mesmas características (propriedades) e comportamentos (métodos).
 
