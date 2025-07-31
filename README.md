@@ -14,6 +14,7 @@ Este repositório contém meus estudos, anotações e exemplos práticos em Java
 - [Objetos Lineares](#objetos-lineares)
 - [JSON](#json)
 - [Node](#node)
+- [Programação Orientada a Objeto](#programacao-orientada-a-objeto)
 
 ## **Escopo**
 Por padrão o **JavaScript** ao declarar variável sem a palavra reservada o interpretador indentifica com um **`var`**
@@ -484,3 +485,119 @@ minhaFuncao(); // Saída: Minha função
 
 ### *Package.json*
 `package.json` é um arquivo de configuração no formato JSON que contém metadados sobre um projeto Node.js. Ele inclui informações como o nome do projeto, versão, descrição, dependências, scripts e outras configurações.
+
+## **Programação Orientada a Objeto**
+POO é uma forma de programar onde você organiza seu código como se fosse o mundo real — com objetos que possuem características (propriedades) e ações (métodos).
+
+### *Herança Prototípica*
+Herança prototípica é o mecanismo onde um objeto pode herdar propriedades e métodos de outro objeto. Isso é feito através de uma cadeia de protótipos.
+
+Imagine que objetos têm uma “corrente invisível” chamada protótipo, onde eles podem pegar coisas emprestadas de outros objetos.
+
+#### Exemplo:
+
+```
+const animal = {
+  dormir() {
+    console.log("Animal dormindo");
+  }
+};
+
+const cachorro = {
+  latir() {
+    console.log("Au au");
+  }
+};
+
+Object.setPrototypeOf(cachorro, animal);
+
+cachorro.latir();   // Au au
+cachorro.dormir();  // Animal dormindo (pegou do protótipo)
+```
+
+#### Object.setPrototypeOf()
+É uma função que define manualmente o protótipo (o “pai”) de um objeto.
+
+`Object.setPrototypeOf(objetoFilho, objetoPai);`
+- objetoFilho: o objeto que vai herdar.
+- objetoPai: o objeto que será o protótipo (fonte de herança).
+
+**Cuidado**
+- Object.setPrototypeOf() não é usado com frequência no dia a dia.
+- É mais comum usar class + extends para herança.
+- Alterar o protótipo manualmente pode ser mais lento em código que roda muitas vezes.
+
+**Quando usar?**
+- Quando você está trabalhando com objetos literais puros `({})` e quer aplicar herança simples sem usar class.
+- Em projetos educativos, testes ou APIs mais avançadas.
+
+### *Constructor*
+`constructor` é um método especial que toda classe pode ter. Ele executa automaticamente quando você cria um novo objeto com`new`.
+
+| O que é | Analogia |
+|---------| -------- |
+| O constructor serve para configurar o objeto assim que ele é criado. | Ele é como uma fábrica de objetos personalizada: você usa ele para inicializar as propriedades do seu objeto com os dados que você quiser. |
+
+#### Exemplo:
+```
+class Pessoa {
+  constructor(nome, idade) {
+    this.nome = nome;
+    this.idade = idade;
+  }
+}
+```
+
+### *New*
+`new` é uma palavra-chave em JavaScript que:
+- Cria um objeto vazio `{ }` por trás dos panos
+- Liga esse objeto ao protótipo da classe
+- Executa o constructor da classe
+- Retorna o objeto criado
+
+#### Exemplo:
+`const enzo = new Pessoa("Enzo", 25);`
+
+### *This*
+`this` é uma palavra especial que se refere ao objeto atual.
+
+#### Exemplo:
+```
+class Pessoa {
+  constructor(nome) {
+    this.nome = nome;
+  }
+
+  falar() {
+    console.log("Meu nome é " + this.nome);
+  }
+}
+
+const maria = new Pessoa("Maria");
+maria.falar(); // Meu nome é Maria
+```
+- Aqui, this.nome → pega o nome da própria maria
+- `this` dentro do método falar() é o objeto maria
+
+### *Class*
+`class` é um molde (modelo) para criar vários objetos com as mesmas características (propriedades) e comportamentos (métodos).
+
+#### Exemplo
+
+```
+class Pessoa {
+  constructor(nome, idade) {
+    this.nome = nome;
+    this.idade = idade;
+  }
+
+  apresentar() {
+    console.log(`Olá! Meu nome é ${this.nome} e tenho ${this.idade} anos.`);
+  }
+}
+```
+- Pessoa é a classe.
+- O constructor é executado automaticamente ao usar new.
+- apresentar() é um método compartilhado entre todos os objetos criados com essa classe.
+
+#### Criando Objetos com class
