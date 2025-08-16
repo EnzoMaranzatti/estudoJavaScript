@@ -15,7 +15,7 @@ Este repositório contém meus estudos, anotações e exemplos práticos em Java
 - [Objetos Lineares](#objetos-lineares)
 - [JSON](#json)
 - [Node](#node)
-- [Programação Orientada a Objeto](#programacao-orientada-a-objeto)
+- [POO](#poo)
 - [Os 4 pilares do POO](#os-4-pilares-do-poo)
 
 ## **Escopo**
@@ -488,7 +488,7 @@ minhaFuncao(); // Saída: Minha função
 ### *Package.json*
 `package.json` é um arquivo de configuração no formato JSON que contém metadados sobre um projeto Node.js. Ele inclui informações como o nome do projeto, versão, descrição, dependências, scripts e outras configurações.
 
-## **Programação Orientada a Objeto**
+## **POO**
 POO é uma forma de programar onde você organiza seu código como se fosse o mundo real — com objetos que possuem características (propriedades) e ações (métodos).
 
 ### *Herança Prototípica*
@@ -646,7 +646,7 @@ class Pessoa {
 - O constructor é executado automaticamente ao usar new.
 - apresentar() é um método compartilhado entre todos os objetos criados com essa classe.
 
-## Os 4 pilares do POO
+## **Os 4 pilares do POO**
 POO é uma forma de programar onde você organiza seu código como se fosse o mundo real — com objetos que possuem características (propriedades) e ações (métodos). Essa forma de pensar torna o código mais organizado, reutilizável e fácil de manter.
 ### *Encapsulamento*
 Encapsulamento é o conceito de **"esconder os detalhes internos"** e expor apenas o necessário. Em JavaScript, isso pode ser feito controlando como os dados de um objeto podem ser acessados ou modificados.
