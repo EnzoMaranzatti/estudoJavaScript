@@ -764,6 +764,67 @@ const p = new Pessoa("Maria", 30);
 console.log(p.idade); // 30
 p.idade = -5;         // Idade inválida
 ```
+### *Herança*
+Herança é o mecanismo de reaproveitar código: uma classe (ou objeto) “filha” herda propriedades e métodos de uma classe (ou objeto) “pai”. Em JavaScript moderno, fazemos isso com `class` + `extends` (por baixo dos panos, tudo continua sendo protótipos).
+A ideia central é: se A é um tipo de B (relação é-um / is-a), então A pode estender B, herdando comportamentos e podendo especializá-los (sobrescrever/estender métodos).
+
+#### **Exemplo**
+``` 
+class Conta {
+  constructor(titular, saldoInicial = 0) {
+    this.titular = titular;
+    this.saldo = saldoInicial;
+  }
+
+  depositar(valor) {
+    if (valor <= 0) throw new Error("Depósito inválido");
+    this.saldo += valor;
+  }
+
+  sacar(valor) {
+    if (valor <= 0) throw new Error("Saque inválido");
+    if (valor > this.saldo) throw new Error("Saldo insuficiente");
+    this.saldo -= valor;
+  }
+
+  extrato() {
+    console.log(`[${this.titular}] Saldo: R$ ${this.saldo.toFixed(2)}`);
+  }
+}
+
+class ContaPoupanca extends Conta {
+  constructor(titular, saldoInicial = 0, taxaJuros = 0.005) {
+    super(titular, saldoInicial); // chama o constructor da classe pai
+    this.taxaJuros = taxaJuros;
+  }
+
+  // especialização: além do que a Conta faz, aplica juros mensais
+  renderJuros() {
+    const rendimento = this.saldo * this.taxaJuros;
+    this.depositar(rendimento);
+  }
+
+  // sobrescrita (override): muda o comportamento de sacar
+  sacar(valor) {
+    // Exemplo de regra diferente: deixa sempre R$ 50 de saldo mínimo
+    if (this.saldo - valor < 50) throw new Error("Saldo mínimo da poupança é R$ 50");
+    super.sacar(valor); // reutiliza a lógica da classe pai
+  }
+}
+
+const cp = new ContaPoupanca("Maria", 500, 0.01);
+cp.extrato();        // [Maria] Saldo: R$ 500.00
+cp.renderJuros();
+cp.extrato();        // Saldo com juros
+cp.sacar(200);
+cp.extrato();        // Saque respeitando saldo mínimo
+```
+**Pontos-chave do exemplo:**
+- `extends` cria a relação de herança.
+- `super(...)` chama o constructor da classe pai.
+- `super.metodo()` reutiliza o comportamento do pai dentro de um método sobrescrito.
+- A classe filha pode adicionar novos métodos (`renderJuros`) e modificar comportamentos herdados (`sacar`).
+
 ### *Polimorfismo*
 Polimorfismo significa “muitas formas”. É quando diferentes classes têm métodos com o mesmo nome, mas comportamentos diferentes.
 
