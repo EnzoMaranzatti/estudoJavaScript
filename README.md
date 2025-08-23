@@ -1,4 +1,5 @@
 
+
 # **Estudos JavaScript Inicial**
 Este repositório contém meus estudos, anotações e exemplos práticos em JavaScript, organizados por tópicos fundamentais da linguagem. Ele serve como material de revisão pessoal e guia de consulta para outros estudantes.
 
@@ -14,7 +15,8 @@ Este repositório contém meus estudos, anotações e exemplos práticos em Java
 - [Objetos Lineares](#objetos-lineares)
 - [JSON](#json)
 - [Node](#node)
-- [Programação Orientada a Objeto](#programacao-orientada-a-objeto)
+- [POO](#poo)
+- [Os 4 pilares do POO](#os-4-pilares-do-poo)
 
 ## **Escopo**
 Por padrão o **JavaScript** ao declarar variável sem a palavra reservada o interpretador indentifica com um **`var`**
@@ -486,7 +488,7 @@ minhaFuncao(); // Saída: Minha função
 ### *Package.json*
 `package.json` é um arquivo de configuração no formato JSON que contém metadados sobre um projeto Node.js. Ele inclui informações como o nome do projeto, versão, descrição, dependências, scripts e outras configurações.
 
-## **Programação Orientada a Objeto**
+## **POO**
 POO é uma forma de programar onde você organiza seu código como se fosse o mundo real — com objetos que possuem características (propriedades) e ações (métodos).
 
 ### *Herança Prototípica*
@@ -644,4 +646,245 @@ class Pessoa {
 - O constructor é executado automaticamente ao usar new.
 - apresentar() é um método compartilhado entre todos os objetos criados com essa classe.
 
-#### Criando Objetos com class
+## **Os 4 pilares do POO**
+POO é uma forma de programar onde você organiza seu código como se fosse o mundo real — com objetos que possuem características (propriedades) e ações (métodos). Essa forma de pensar torna o código mais organizado, reutilizável e fácil de manter.
+### *Encapsulamento*
+Encapsulamento é o conceito de **"esconder os detalhes internos"** e expor apenas o necessário. Em JavaScript, isso pode ser feito controlando como os dados de um objeto podem ser acessados ou modificados.
+
+- **Objetivo:** proteger as propriedades para que não sejam alteradas de forma incorreta.
+- **Ferramenta:** `getters` e `setters`.
+
+#### Getters e setters
+- **Getter (get):** método especial que lê uma propriedade de forma controlada.
+- **Setter (set):** método especial que altera uma propriedade de forma controlada.
+Eles não são funções comuns — funcionam como acessores de propriedades. Isso significa que você usa como se fossem atributos normais, mas por trás dos panos uma lógica é executada.
+
+#### **Estrutura base**
+```
+class Exemplo {
+  constructor(valor) {
+    this._valor = valor; // underline por convenção: propriedade "privada"
+  }
+
+  get valor() {
+    return this._valor;
+  }
+
+  set valor(novoValor) {
+    this._valor = novoValor;
+  }
+}
+
+const obj = new Exemplo(10);
+console.log(obj.valor); // chama o getter → 10
+
+obj.valor = 20;         // chama o setter
+console.log(obj.valor); // 20x'
+```
+
+- O getter é chamado quando você acessa obj.valor.
+- O setter é chamado quando você faz obj.valor = ....
+
+#### **Controle de acesso**
+Você pode validar valores antes de permitir a alteração.
+``` 
+class Conta {
+  constructor(saldo) {
+    this._saldo = saldo;
+  }
+
+  get saldo() {
+    return this._saldo;
+  }
+
+  set saldo(valor) {
+    if (valor < 0) {
+      console.log("Erro: saldo não pode ser negativo");
+    } else {
+      this._saldo = valor;
+    }
+  }
+}
+
+const conta = new Conta(1000);
+console.log(conta.saldo); // 1000
+conta.saldo = -500;       // Erro: saldo não pode ser negativo
+console.log(conta.saldo); // 1000
+```
+Aqui o setter protege a regra de negócio.
+
+#### **Propriedades virtuais (calculadas)**
+Um getter pode **simular** uma propriedade que nem existe no objeto, mas que é calculada dinamicamente.
+
+```
+class Retangulo {
+  constructor(largura, altura) {
+    this.largura = largura;
+    this.altura = altura;
+  }
+
+  get area() {
+    return this.largura * this.altura;
+  }
+}
+
+const r = new Retangulo(5, 10);
+console.log(r.area); // 50
+```
+Perceba: `r.area` não existe como atributo armazenado, mas o getter faz parecer que existe.
+
+#### **Detalhe importante**
+- Por convenção, muitas vezes usamos underline `(_)` em propriedades internas `(_saldo, _valor)` para indicar que são "privadas" (embora o JavaScript não as torne privadas de verdade).w
+- Getter e setter são opcionais — você pode usar apenas get ou apenas set, dependendo da necessidade.
+- Em ES2020+, o JavaScript introduziu campos privados reais com #, mas isso é um passo além.
+
+```
+class Pessoa {
+  #idade; // propriedade realmente privada
+
+  constructor(nome, idade) {
+    this.nome = nome;
+    this.#idade = idade;
+  }
+
+  get idade() {
+    return this.#idade;
+  }
+
+  set idade(novaIdade) {
+    if (novaIdade < 0) {
+      console.log("Idade inválida");
+    } else {
+      this.#idade = novaIdade;
+    }
+  }
+}
+
+const p = new Pessoa("Maria", 30);
+console.log(p.idade); // 30
+p.idade = -5;         // Idade inválida
+```
+### *Herança*
+Herança é o mecanismo de reaproveitar código: uma classe (ou objeto) “filha” herda propriedades e métodos de uma classe (ou objeto) “pai”. Em JavaScript moderno, fazemos isso com `class` + `extends` (por baixo dos panos, tudo continua sendo protótipos).
+A ideia central é: se A é um tipo de B (relação é-um / is-a), então A pode estender B, herdando comportamentos e podendo especializá-los (sobrescrever/estender métodos).
+
+#### **Exemplo**
+``` 
+class Conta {
+  constructor(titular, saldoInicial = 0) {
+    this.titular = titular;
+    this.saldo = saldoInicial;
+  }
+
+  depositar(valor) {
+    if (valor <= 0) throw new Error("Depósito inválido");
+    this.saldo += valor;
+  }
+
+  sacar(valor) {
+    if (valor <= 0) throw new Error("Saque inválido");
+    if (valor > this.saldo) throw new Error("Saldo insuficiente");
+    this.saldo -= valor;
+  }
+
+  extrato() {
+    console.log(`[${this.titular}] Saldo: R$ ${this.saldo.toFixed(2)}`);
+  }
+}
+
+class ContaPoupanca extends Conta {
+  constructor(titular, saldoInicial = 0, taxaJuros = 0.005) {
+    super(titular, saldoInicial); // chama o constructor da classe pai
+    this.taxaJuros = taxaJuros;
+  }
+
+  // especialização: além do que a Conta faz, aplica juros mensais
+  renderJuros() {
+    const rendimento = this.saldo * this.taxaJuros;
+    this.depositar(rendimento);
+  }
+
+  // sobrescrita (override): muda o comportamento de sacar
+  sacar(valor) {
+    // Exemplo de regra diferente: deixa sempre R$ 50 de saldo mínimo
+    if (this.saldo - valor < 50) throw new Error("Saldo mínimo da poupança é R$ 50");
+    super.sacar(valor); // reutiliza a lógica da classe pai
+  }
+}
+
+const cp = new ContaPoupanca("Maria", 500, 0.01);
+cp.extrato();        // [Maria] Saldo: R$ 500.00
+cp.renderJuros();
+cp.extrato();        // Saldo com juros
+cp.sacar(200);
+cp.extrato();        // Saque respeitando saldo mínimo
+```
+**Pontos-chave do exemplo:**
+- `extends` cria a relação de herança.
+- `super(...)` chama o constructor da classe pai.
+- `super.metodo()` reutiliza o comportamento do pai dentro de um método sobrescrito.
+- A classe filha pode adicionar novos métodos (`renderJuros`) e modificar comportamentos herdados (`sacar`).
+
+### *Polimorfismo*
+Polimorfismo significa “muitas formas”. É quando diferentes classes têm métodos com o mesmo nome, mas comportamentos diferentes.
+
+``` 
+class Animal {
+  fazerSom() {
+    console.log("Som genérico");
+  }
+}
+
+class Cachorro extends Animal {
+  fazerSom() {
+    console.log("Au au!");
+  }
+}
+
+class Gato extends Animal {
+  fazerSom() {
+    console.log("Miau!");
+  }
+}
+
+const animais = [new Cachorro(), new Gato()];
+animais.forEach(a => a.fazerSom());
+// Au au!
+// Miau!
+```
+
+#### **Analogia**
+
+Imagine a palavra "dirigir".
+- Um carro dirige de uma forma.
+- Uma moto dirige de outra forma.
+- Um caminhão dirige ainda de outra forma.
+
+Apesar de usarmos a mesma palavra (método), o comportamento muda dependendo do contexto (classe).
+
+O polimorfismo facilita a substituição de objetos sem quebrar o código. Se um método é esperado, qualquer objeto que implementá-lo pode ser usado, não importa sua classe específica.
+
+### *Abstração*
+Abstração é simplificar conceitos complexos, mostrando apenas o que é essencial.
+``` 
+class Veiculo {
+  ligar() {
+    console.log("Ligando o veículo...");
+  }
+}
+```
+Aqui, não importa se o veículo é um carro, moto ou ônibus, a ideia abstrata de "ligar" é comum a todos.
+
+#### **Analogia**
+É como **dirigir um carro:** você não precisa entender como o motor funciona internamente, apenas sabe que para "andar" precisa acelerar.
+
+A abstração permite criar classes genéricas que servem como base para outras mais específicas. Assim, você constrói sistemas flexíveis e com menor repetição de código.
+
+### *Resumo dos 4 pilares*
+
+| Pilar              | O que é                                        | Analogia                                         |
+| ------------------ | ---------------------------------------------- | ------------------------------------------------ |
+| **Encapsulamento** | Esconder detalhes internos e controlar acessos | Caixa eletrônico que só mostra o saldo           |
+| **Herança**        | Reaproveitar código de outra classe            | Filhos herdando características dos pais         |
+| **Polimorfismo**   | Mesmos métodos, comportamentos diferentes      | Diferentes veículos "dirigem" de modos distintos |
+| **Abstração**      | Destacar só o que importa                      | Dirigir sem entender o motor                     |
