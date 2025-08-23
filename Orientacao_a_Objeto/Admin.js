@@ -7,8 +7,13 @@ export default class Admin extends User {
       super(nome, email, nascimento, role, ativo);
    }
 
+   // Polimorfismo 
+   // exibirInfos() {
+   //    const infos = super.exibirInfos();
+   //    return `admin - ${infos}`;
+   // }
+
    criarCurso(nomeCurso, quantidadeVagas) {
       return `Cruso: ${nomeCurso} - ${quantidadeVagas} de vagas.`;
    }
 }
-

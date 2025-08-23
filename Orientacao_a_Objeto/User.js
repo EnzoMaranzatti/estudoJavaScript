@@ -15,9 +15,6 @@ export default class User {
 
    // Não recebe nenhum parametro
    get nome() {
-      if (novoNome === "") {
-         throw new Error("Formato do nome não é valido!!");
-      }
       return this.#nome;
    }
    get email() {
@@ -38,9 +35,19 @@ export default class User {
       this.#nome = novoNome;
    }
 
-   exibirInfos() {
 
-      return `${this.nome}, ${this.email}`;
+   exibirInfos() {
+      switch(this.role) {
+         case "estudante": return `dados estudante: ${this.nome}`; break;
+         case "admin": return `dados admin: ${this.nome}, ${this.role}`; break;
+         case "docente": return `dados docente: ${this.nome}, ${this.email}`; break;
+         default: return "role não identificado";
+      }
+   }
+
+   // Métodos estáticos - Não dependão de uma instancia nova e nem de contrutor de classe
+   static exibirInfosGenericas(nome, email) {
+      return `${nome}, ${email}`;
    }
 
    criarPerfil() {
