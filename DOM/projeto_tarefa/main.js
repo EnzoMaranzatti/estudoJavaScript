@@ -1,3 +1,6 @@
+import BotaoConclui from './componentes/concluirTarefa.js';
+import BotaoDeleta from './componentes/deletarTarefa.js';
+
 const criarTarefa = (evento) => {
    // Tira o reflesh da página
    evento.preventDefault();
@@ -9,9 +12,12 @@ const criarTarefa = (evento) => {
    const tarefa = document.createElement('li');
    tarefa.classList.add('task');
    const conteudo = `<p class="content">${valor}</p>`;
-   
+
    tarefa.innerHTML = conteudo;
+   tarefa.appendChild(BotaoConclui());
+   tarefa.appendChild(BotaoDeleta());
    lista.appendChild(tarefa);
+   input.value = " ";
 }
 
 const novaTarefa = document.querySelector('[data-form-button]');

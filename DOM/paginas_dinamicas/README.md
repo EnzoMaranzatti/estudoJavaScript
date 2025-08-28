@@ -1,10 +1,10 @@
 # Projeto Alura Midi
-Esse projeto é uma porta de entrada da linguagem `JavaSript` no contexo web, onde abordado o conceito de DOM e como manipular o código HTML usando `JavaScript`. O objeto deste projeto é construir uma lógica capaz de ao clicar um botão é imitido um som ao usuário de uma certo instrumento músical. Para isso temos que manipular o documento usando DOM e JavaScript. 
+Esse projeto é uma porta de entrada da linguagem `JavaSript` no contexo web, onde abordado o conceito de DOM e como manipular o código HTML usando `JavaScript`. O objetivo deste projeto é construir uma lógica capaz de ao clicar um botão é imitido um som ao usuário de um certo instrumento músical. Para isso temos que manipular o documento usando DOM e JavaScript. 
 
 Por mais simples que seja o projeto ele se torna uma base para termos noção de como é usado a linguagem JavaScript em determinados conceitos. 
 
 ## Códigos JavaScript usados no projeto
-Antes de mostrar a tabela de codigos usados, vamos relembrar que esse projeto foi feito já pressupondo a noção e o conhecimento básico de JavaScript, como saber criar listas, objetos e estruturas de controle temos no nosso repositório uma pasta especifica para essa introdução na linguagem, aqui vamos focar em DOM e como transformar nossas páginas estáticas e páginas dinâmicas, dito isso, vamos para o código.
+Antes de mostrar a tabela de codigos usados, vamos relembrar que esse projeto foi feito já pressupondo a noção e o conhecimento básico de JavaScript, como saber criar listas, objetos e estruturas de controle. Temos no nosso repositório uma pasta especifica para essa introdução na linguagem, aqui vamos focar em DOM e como transformar nossas páginas estáticas e páginas dinâmicas, dito isso, vamos para o código.
 
 | Método/Evento        | Para que serve                                                                                | Quando usar                                                                              | Retorno / Argumentos                                                 | Exemplo curto                                                                            |
 | -------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
