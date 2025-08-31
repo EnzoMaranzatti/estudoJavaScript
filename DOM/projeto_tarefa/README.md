@@ -3,7 +3,7 @@ Este projeto é um exercício prático de como usar DOM para manipulação das p
 
 Abaixo será explicado detalhadamente cada código usado para a construção da lógica do projeto **"Cepp"**.
 
-### addEventListener()
+## addEventListener()
 `addEventListener()` registra uma única espera de evento em um único alvo. O alvo do evento pode ser um único elemento em um documento, o documento em si, uma janela, ou um XMLHttpRequest.
 
 Para registrar mais de uma espera de evento como alvo, chame addEventListener() para o mesmo alvo mas com diferentes tipos de evento ou captura de parâmetros.
@@ -26,7 +26,7 @@ Para registrar mais de uma espera de evento como alvo, chame addEventListener() 
 Observação: ouvintes são disparados na ordem de registro. 
 ```
 
-### preventDefault()
+## preventDefault()
 Cancela o **comportamento padrão** do evento (se `event.cancelable === true`).
 Ex.: impedir que um <form> envie, que um <a> navegue, que o touch faça scroll.
 
@@ -64,7 +64,7 @@ el.addEventListener('touchmove', (e) => {
 - `stopPropagation()` → impede que o evento suba para outros elementos.
 - Podem (ou não) ser usados juntos, dependendo da necessidade.
 
-### createElement()
+## createElement()
 `const el = document.createElement(tagName, options?)`
 - `tagName:` "div", "button", "li", etc.
 - `options` (raro): { is: 'nome-do-custom-element' } para custom built-in elements.
@@ -124,7 +124,7 @@ input.dataset.id = '42';     // data-id="42"
 - `Remover:` el.remove() ou parent.removeChild(el)
 - `Substituir filhos:` parent.replaceChildren(...novos)
 
-### parentElement
+## parentElement
 A propriedade `parentElement` retorna o **elemento pai** mais próximo de um nó no DOM.
 - Se o nó não tiver um pai (ou se o pai for o document), **retorna null.**
 - Diferente de `parentNode:` este pode retornar nós que não são elementos (como Document ou DocumentFragment).
@@ -149,7 +149,7 @@ document.addEventListener('click', (e) => {
 });
 ```
 
-### appendChild()
+## appendChild()
 O método `appendChild()` insere um nó como **último filho de um elemento pai.**
 
 - Move o nó se ele já existir em outro lugar do DOM (não duplica).
@@ -205,7 +205,7 @@ document.querySelector('#mover').addEventListener('click', () => {
 - `replaceChild( elemento1, elemento2):` Substitui o nó elemento 1 pelo nó elemento2.
 - `removeChild(elemento):` Remove um nó da árvore.
 
-### data-attributes
+## data-attributes
 São atributos HTML “customizados” que começam com data-. Eles servem para guardar metadados no próprio elemento, pensados para serem lidos pelo JavaScript (ou usados como ganchos de seleção).
 ```html
 <button
